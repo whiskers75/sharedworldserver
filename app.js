@@ -35,10 +35,9 @@ app.get('/', function(req, res) {
 });
 app.get('/list2.php', function(req, res) {
     console.log('Eden request from ' + req.host);
-    fs.readFile('./public/list', function(resp) {
-        res.writeHead(200);
-        res.end(resp);
-    });
+    res.writeHead(200);
+    res.write('null.eden');
+    res.write("Welcome to whiskers75's Eden server!")
 });
 
 http.createServer(app).listen(app.get('port'), function(){
