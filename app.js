@@ -7,7 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , fs = require('fs');
 
 var app = express();
 
@@ -30,10 +31,14 @@ app.configure('development', function(){
 });
 
 app.get('/', function(req, res) { 
-    http.get({host: 'edengame.net'}, function(response) {
-      res.writeHead(200);
-      res.end(response.body);
-  })});
+    res.redirect('http://github.com/whiskers75/sharedworldserver');
+});
+app.get('/list2.php', function(req, res) {
+    console.log('Eden request from ' + req.host);
+    fs.readFile('./public/list', function(res) {
+        res.write(res);
+    });
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
