@@ -36,8 +36,8 @@ app.get('/', function(req, res) {
 app.get('/list2.php', function(req, res) {
     console.log('Eden request from ' + req.host);
     res.writeHead(200);
-    res.write('null.eden');
-    res.write("Welcome to whiskers75's Eden server!");
+    res.write('null.eden\n');
+    res.write("Welcome to whiskers75's Eden server!\n");
     res.end();
 });
 
