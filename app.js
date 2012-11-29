@@ -35,9 +35,9 @@ app.get('/', function(req, res) {
 });
 app.get('/list2.php', function(req, res) {
     console.log('Eden request from ' + req.host);
-    fs.readFile('./public/list', function(res) {
+    fs.readFile('./public/list', function(resp) {
         res.writeHead(200);
-        res.end(res);
+        res.end(resp);
     });
 });
 
