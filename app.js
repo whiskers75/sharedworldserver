@@ -41,7 +41,7 @@ app.get('/list2.php', function(req, res) {
     res.end();
 });
 app.post('/upload2.php', function(req, res) {
-    req.addListener('data', function(data) {
+    req.on('data', function(data) {
         console.log(data);
     });
     res.writeHead(200);
