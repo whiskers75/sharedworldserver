@@ -43,8 +43,8 @@ app.get('/', function(req, res) {
 app.get('/list2.php', function(req, res) {
     console.log('Eden ' + req.method + ' request');
     res.writeHead(200);
-    if (req.param('search')) {
-        req.console = req.param('search').split('%20');
+    if (req.query.search) {
+        req.console = req.query.search.split(' ');
         write(req.console, res);
         if (req.console[1] == 'USER') {
             write('Welcome back, ' + req.console[2] + '..name', res);
