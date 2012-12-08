@@ -48,7 +48,6 @@ app.get('/list2.php', function(req, res) {
         req.console = req.query.search.split(' ');
         console.log(req.console);
         if (req.console[0] == 'USER') {
-            if (whitelist & req.console[1] == whitelist) { // Dev whitelist code
                 fs.stat('./public/users/' + req.console[1], function(err, stats) {
                     if (err) {
                         write('Error accessing userfile', res);
@@ -69,10 +68,6 @@ app.get('/list2.php', function(req, res) {
                         }
                     }
                 });
-            } // Dev whitelist code
-        }
-        if (req.console[0] == 'WORLDS') {
-            
         }
         else {
             write('Command not recognized.', res);
