@@ -45,7 +45,7 @@ app.get('/list2.php', function(req, res) {
     res.writeHead(200);
     if (req.query.search) {
         req.console = req.query.search.split(' ');
-        write(req.query.search, res);
+        console.log(req.query.search)
         if (req.console[1] == 'USER') {
             write('Welcome back, ' + req.console[2] + '..name', res);
         }
