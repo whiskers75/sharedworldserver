@@ -13,8 +13,8 @@ var express = require('express')
 
 var app = express();
 
-var eden;
-eden.write = function(msg, res) {
+
+var write = function(msg, res) {
     res.write('null.eden\n');
     res.write(msg + '.name');
 };
@@ -47,10 +47,10 @@ app.get('/list2.php', function(req, res) {
         req.console = req.param('search').split(' ');
         res.write('null.eden\n '+ req.console[1] + ' ' + req.console[2] + '.name');
         if (req.console[1] == 'USER') {
-            eden.write('Welcome back, ' + req.console[2] + '..name', res);
+            write('Welcome back, ' + req.console[2] + '..name', res);
         }
         else {
-            eden.write('Command not recognized.');
+            write('Command not recognized.');
         }
     }
     else {
