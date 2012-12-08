@@ -8,6 +8,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
+  , whitelist = 'whiskers75'
   , version = 'Beta 0.0.2'
   , fs = require('fs');
 
@@ -46,10 +47,31 @@ app.get('/list2.php', function(req, res) {
     if (req.query.search) {
         req.console = req.query.search.split(' ');
         if (req.console[0] == 'USER') {
-            write('Welcome back, ' + req.console[1], res);
+            if (whitelist & req.console[1] == whitelist) { // Dev whitelist code
+                fs.stat('./public/users/' + req.console[1], function(err, stats) {
+                    if (err) {
+                        write('Error accessing userfile', res);
+                    }
+                    else {
+                        if (stats.isFile()) {
+                            write('Welcome back, ' + req.console[1], res);
+                        }
+                        else {
+                            fs.appendFile('./public/users/' + req.console[1], '', function(err, response) {
+                                if (err) {
+                                    write('Error creating userfile', res);
+                                }
+                                else {
+                                    write('New user created: ' + req.console[1], res);
+                                }
+                            });
+                        }
+                    }
+                });
+            } // Dev whitelist code
         }
         if (req.console[0] == 'WORLDS') {
-            res.redirect('http://edengame.net');
+            
         }
         else {
             write('Command not recognized.', res);
