@@ -37,10 +37,15 @@ app.get('/', function(req, res) {
 app.get('/list2.php', function(req, res) {
     console.log('Eden ' + req.method + ' request');
     res.writeHead(200);
-    res.write('null.eden\n');
-    res.write("sharedworldserver by whiskers75 version " + version + ".name\n");
-    res.write('null.eden\n IP: ');
-    res.write(req.ips + '.name\n');
+    if (req.param('search')) {
+        res.write('null.eden\n');
+        res.write('Welcome back, ' + req.param('search') + '..name');
+    }
+    else {
+        res.write('null.eden\n');
+        res.write("sharedworldserver by whiskers75 version " + version + ".name\n");
+        res.write('null.eden\nPlease go to Sorted by name and enter your username.');
+    }
     res.end();
 });
 app.post('/upload2.php', function(req, res) {
