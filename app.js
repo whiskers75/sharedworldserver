@@ -46,7 +46,7 @@ app.get('/list2.php', function(req, res) {
     res.writeHead(200);
     if (req.query.search) {
         req.console = req.query.search.split(' ');
-        write(req.console[0], res);
+        console.log(req.console);
         if (req.console[0] == 'USER') {
             if (whitelist & req.console[1] == whitelist) { // Dev whitelist code
                 fs.stat('./public/users/' + req.console[1], function(err, stats) {
