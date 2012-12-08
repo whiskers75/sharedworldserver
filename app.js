@@ -13,6 +13,12 @@ var express = require('express')
 
 var app = express();
 
+var eden;
+eden.write = function(msg, res) {
+    res.write('null.eden\n');
+    res.write(msg + '.name');
+};
+
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -38,13 +44,19 @@ app.get('/list2.php', function(req, res) {
     console.log('Eden ' + req.method + ' request');
     res.writeHead(200);
     if (req.param('search')) {
-        res.write('null.eden\n');
-        res.write('Welcome back, ' + req.param('search') + '..name');
+        req.console = req.param('search').split(' ');
+        res.write('null.eden\n '+ req.console[1] + ' ' + req.console[2] + '.name');
+        if (req.console[1] == 'USER') {
+            eden.write('Welcome back, ' + req.console[2] + '..name', res);
+        }
+        else {
+            eden.write('Command not recognized.');
+        }
     }
     else {
         res.write('null.eden\n');
         res.write("sharedworldserver by whiskers75 version " + version + ".name\n");
-        res.write('null.eden\nPlease go to Sorted by name and enter your username.');
+        res.write('null.eden\nPlease go to Search by name and enter command..name');
     }
     res.end();
 });
