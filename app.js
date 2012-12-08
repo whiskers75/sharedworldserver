@@ -35,12 +35,12 @@ app.get('/', function(req, res) {
     res.redirect('http://github.com/whiskers75/sharedworldserver');
 });
 app.get('/list2.php', function(req, res) {
-    console.log('Eden ' + req.method + ' request from ' + req.ip);
+    console.log('Eden ' + req.method + ' request');
     res.writeHead(200);
     res.write('null.eden\n');
     res.write("sharedworldserver by whiskers75 version " + version + ".name\n");
     res.write('null.eden\n IP: ');
-    res.write(req.ip + '.name\n');
+    res.write(req.ips[1] + '.name\n');
     res.end();
 });
 app.post('/upload2.php', function(req, res) {
