@@ -34,14 +34,15 @@ app.get('/', function(req, res) {
     res.redirect('http://github.com/whiskers75/sharedworldserver');
 });
 app.get('/list2.php', function(req, res) {
-    console.log('Eden ' + req.method + ' request from ' + req.fwd);
+    console.log('Eden ' + req.method + ' request from ' + req.headers.host);
     res.writeHead(200);
     res.write('null.eden\n');
     res.write("Welcome to whiskers75's Eden server!.name\n");
     res.end();
 });
 app.post('/upload2.php', function(req, res) {
-    console.log(req.body);
+    res.writeHead(500);
+    console.log('Uploaded Eden file: ' + req.files.path);
 });
 
 http.createServer(app).listen(app.get('port'), function(){
