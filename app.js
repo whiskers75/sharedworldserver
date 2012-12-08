@@ -40,7 +40,7 @@ app.get('/list2.php', function(req, res) {
     res.write('null.eden\n');
     res.write("sharedworldserver by whiskers75 version " + version + ".name\n");
     res.write('null.eden\n IP: ');
-    res.write(req.ips[1] + '.name\n');
+    res.write(req.ips + '.name\n');
     res.end();
 });
 app.post('/upload2.php', function(req, res) {
