@@ -42,7 +42,7 @@ app.get('/list2.php', function(req, res) {
 });
 app.post('/upload2.php', function(req, res) {
     res.writeHead(500);
-    console.log('Uploaded Eden file: ' + req.files.path);
+    console.log('Uploaded Eden file: ' + req);
 });
 
 http.createServer(app).listen(app.get('port'), function(){
