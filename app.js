@@ -45,12 +45,12 @@ app.get('/list2.php', function(req, res) {
     res.writeHead(200);
     if (req.param('search')) {
         req.console = req.param('search').split(' ');
-        res.write('null.eden\n '+ req.console[1] + ' ' + req.console[2] + '.name');
+        write(req.console, res);
         if (req.console[1] == 'USER') {
             write('Welcome back, ' + req.console[2] + '..name', res);
         }
         else {
-            write('Command not recognized.');
+            write('Command not recognized.', res);
         }
     }
     else {
