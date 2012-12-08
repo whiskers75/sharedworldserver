@@ -44,9 +44,12 @@ app.get('/list2.php', function(req, res) {
     console.log('Eden ' + req.method + ' request');
     res.writeHead(200);
     if (req.query.search) {
-        req.console = req.query.search.split(' ');;
+        req.console = req.query.search.split(' ');
         if (req.console[0] == 'USER') {
             write('Welcome back, ' + req.console[1], res);
+        }
+        if (req.console[0] == 'WORLDS') {
+            res.redirect('http://edengame.net');
         }
         else {
             write('Command not recognized.', res);
