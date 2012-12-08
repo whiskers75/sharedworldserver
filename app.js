@@ -44,7 +44,8 @@ app.get('/list2.php', function(req, res) {
     console.log('Eden ' + req.method + ' request');
     res.writeHead(200);
     if (req.param('search')) {
-        req.console = req.param('search').split(' ');
+        req.console = req.param('search').split(',');
+        req.console[2] = req.console[2].substr(0, req.console[2].indexOf('.') - 1)
         write(req.console, res);
         if (req.console[1] == 'USER') {
             write('Welcome back, ' + req.console[2] + '..name', res);
