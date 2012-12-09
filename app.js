@@ -69,9 +69,6 @@ app.get('/list2.php', function(req, res) {
                     }
                 });
         }
-        else {
-            write('Command not recognized.', res);
-        }
     }
     else {
         res.write('null.eden\n');
